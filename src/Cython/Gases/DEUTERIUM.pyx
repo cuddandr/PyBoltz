@@ -19,7 +19,7 @@ cdef void Gas22(Gas*object):
     """
     This function is used to calculate the needed momentum cross sections for Deuterium gas.
     """
-    gd = np.load(os.path.join(os.path.dirname(os.path.realpath(__file__)),"gases.npy")).item()
+    gd = np.load(os.path.join(os.path.dirname(os.path.realpath(__file__)),"gases.npy"), allow_pickle=True).item()
 
     cdef double XEN[53],YXSEC[53],XROT0[40],YROT0[40],XROT1[42],YROT1[42],XROT2[31],YROT2[31],XROT3[31],YROT3[31],XROT4[31],YROT4[31],
     cdef double XROT5[30],YROT5[30],XVIB1[35],YVIB1[35],XVIB2[35],YVIB2[35],XVIB3[16],YVIB3[16],XVIB4[16],YVIB4[16],XEXC1[20],YEXC1[20],

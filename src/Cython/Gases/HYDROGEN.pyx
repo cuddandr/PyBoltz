@@ -19,7 +19,7 @@ cdef void Gas21(Gas*object):
     """
     This function is used to calculate the needed momentum cross sections for Hydrogen gas.
     """
-    gd = np.load(os.path.join(os.path.dirname(os.path.realpath(__file__)),"gases.npy")).item()
+    gd = np.load(os.path.join(os.path.dirname(os.path.realpath(__file__)),"gases.npy"), allow_pickle=True).item()
 
     cdef double XELM[172], YELM[172], YELT[172], YEPS[172], XROT0[53], YROT0[53], XROT1[43], YROT1[43], XROT2[28], YROT2[28],
     cdef double XROT3[28], YROT3[28], XVIB1[43], YVIB1[43], XVIB2[42], YVIB2[42], XVIB3[13], YVIB3[13], XVIB4[12], YVIB4[12],
