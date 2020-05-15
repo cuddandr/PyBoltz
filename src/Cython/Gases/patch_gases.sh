@@ -1,7 +1,7 @@
 #!/bin/bash
 
+#Script needs to be run in the Gases/ directory
 PATCH_FILE=gas.patch
-
 PATCH_TEXT='18c18
 <     gd = np.load(os.path.join(os.path.dirname(os.path.realpath(__file__)),"gases.npy")).item()
 ---
@@ -11,8 +11,12 @@ echo "$PATCH_TEXT" > $PATCH_FILE
 
 echo "Using $PATCH_FILE"
 for FILE in *.pyx; do
-    echo "Patching $FILE ..."
-    patch $FILE $PATCH_FILE
+    grep "np.load" $FILE &> /dev/null
+
+    if [ $? -eq 0 ]; then
+        echo "Patching $FILE ..."
+        patch $FILE $PATCH_FILE
+    fi
 done
 
 rm $PATCH_FILE
